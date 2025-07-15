@@ -1,0 +1,276 @@
+// styles.scss
+
+/* Variables */
+$primary-clr: hsl(0, 0%, 9%); // Eirie black
+$secondary-clr: hsl(128, 70%, 21%); // #105b1a Pakistan green
+$accent-clr: hsl(36, 66%, 58%); // Golden brown
+$white: #fff; // white
+$font-family-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+html{
+  scroll-behavior: smooth;
+}
+/* Global Styles */
+body {
+    font-family: $font-family-base;
+    //   background-color: $bg-dark;
+    //   color: $secondary-clr;
+    margin: 0;
+    //   padding: 0;
+    scroll-padding-top: 5vh;
+}
+
+a {
+    // color: $accent-clr;
+    transition: color 0.3s ease;
+
+    &:hover {
+        // color: lighten($accent-clr, 10%);
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Utility Classes */
+.bg-primary{
+  background-color: $primary-clr;
+}
+.bg-secondary{
+  background-color: $secondary-clr;
+}
+.bg-accent{
+  background-color: $accent-clr;
+}
+.text-gold {
+    color: $accent-clr !important;
+}
+.bg-gradient-to-br{
+  // background-image: linear-gradient(to bottom right, $primary-clr, $secondary-clr);
+  background-image: linear-gradient(
+  135deg, 
+  lighten($primary-clr, 10%) 0%, 
+  $primary-clr 25%, 
+  $secondary-clr 75%, 
+  darken($secondary-clr, 10%) 100%
+);
+
+}
+
+/* Navbar */
+.navbar {
+      background-color: $white;
+
+    .navbar-brand {
+
+        // flex: 0 1 30%;
+        .logo {
+            width: clamp(100px, 150px, 30%);
+        }
+    }
+
+    .nav-links {
+
+        // backdrop-filter: blur(10px);
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+
+        @media(max-width:991px) {
+            width: 100%;
+            // background: rgba(0, 0, 0, 0.9);
+            position: absolute;
+            top: -1000%;
+            left: 0;
+            z-index: 100;
+        }
+
+        &.active {
+            top: 100%;
+            height: 90vh;
+            width: 100%;
+            min-height: 50vh;
+            background: rgba(16, 53, 21, 0.35);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            color: $white;
+
+        }
+
+    }
+
+
+}
+
+// hero
+#hero {
+    background-color: $white;
+  
+    .bg-gradient-to-br {
+      background: radial-gradient(circle at center, $secondary-clr 0%, transparent 70%);
+    }
+  
+    h1 {
+      color: $primary-clr;
+    }
+  
+    h2 {
+      color: $secondary-clr;
+    }
+  
+    p {
+      color: $primary-clr;
+    }
+  
+    img {
+      border-radius: 1rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+  
+    .rotate-\[8deg\] {
+      transform: rotate(8deg);
+    }
+  
+    .-inset-3 {
+      top: -0.75rem;
+      bottom: -0.75rem;
+      left: -0.75rem;
+      right: -0.75rem;
+    }
+  
+    .rounded-2xl {
+      border-radius: 1rem;
+    }
+  
+    .shadow-xl {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+  
+    .text-primary-clr {
+      color: $primary-clr;
+    }
+  
+    .text-secondary-clr {
+      color: $secondary-clr;
+    }
+  
+    .bg-accent-clr {
+      background-color: $accent-clr;
+    }
+  
+    .from-secondary-clr\/30 {
+      background: radial-gradient(circle at center, rgba($secondary-clr, 0.3) 0%, transparent 100%);
+    }
+  
+    .to-secondary-clr\/10 {
+      background: radial-gradient(circle at center, rgba($secondary-clr, 0.1) 0%, transparent 100%);
+    }
+  }
+  
+
+/* The Vision Section Styles */
+/* The Vision Section */
+#vision {
+    background: $secondary-clr url(assets/images/gallery/SPB_Museum-photos-9.jpg) no-repeat center / cover fixed;
+    background-blend-mode: overlay;
+
+  
+   
+    .vision-title {
+      // color: $primary-clr;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+  
+    .vision-paragraph {
+      // color: $primary-clr;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      position: relative;
+    }
+  
+    // Highlight style for key words
+    .highlight {
+      font-weight: 600;
+      position: relative;
+      transition: transform 0.3s ease, color 0.3s ease;
+      /* Initial state for animation */
+      opacity: 0.8;
+    }
+  
+    // Optional: pseudo-element for glowing effect on hover (if desired)
+    .highlight::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background: $accent-clr;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+      filter: blur(4px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+  }
+  
+
+  // CTA
+
+  
+
+/* Footer */
+footer {
+    background-color: $accent-clr;
+    padding: 2rem 0;
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        &.footer-bottom{
+          display: flex;
+          p{
+            text-align: center;
+          }
+        }
+    }
+
+    h5 {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    a {
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $white;
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 0.25rem;
+
+        }
+    }
+
+    .text-center {
+        margin-top: 1rem;
+        color: lighten($secondary-clr, 20%);
+    }
+}
