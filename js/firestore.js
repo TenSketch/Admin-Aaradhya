@@ -1,33 +1,20 @@
 // firestore.js - Firestore setup and helpers
-import { app } from './firebase-auth.js';
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  getDoc,
-  doc,
-  addDoc,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  where,
-  orderBy,
-  limit
-} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+// firestore.js - API helpers for backend connectivity
 
-export const db = getFirestore(app);
-export {
-  collection,
-  getDocs,
-  getDoc,
-  doc,
-  addDoc,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  query,
-  where,
-  orderBy,
-  limit
-};
+const API_BASE = '/api';
+
+export async function getCollection(collectionName) {
+  const res = await fetch(`${API_BASE}/${collectionName}`);
+  if (!res.ok) throw new Error('Failed to fetch collection');
+  return await res.json();
+}
+
+export async function addToCollection(collectionName, data) {
+  const res = await fetch(`${API_BASE}/${collectionName}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('Failed to add document');
+  return await res.json();
+}

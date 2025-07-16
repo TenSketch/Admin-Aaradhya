@@ -1,5 +1,5 @@
 // login.js - Handles Firebase Auth for login page
-import { auth, signInWithEmailAndPassword } from './firebase-auth.js';
+// Now using backend API for authentication
 
 function showError(message) {
     const errorDiv = document.getElementById('errorMessage');
@@ -46,12 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
         showLoading(true);
         hideError();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
-            sessionStorage.setItem('adminLoggedIn', 'true');
-            sessionStorage.setItem('adminUsername', email);
-            window.location.href = 'index.html';
+            const res = await fetch('http://localhost:3001/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const result = await res.json();
+            if (res.ok && result.success) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                sessionStorage.setItem('adminUsername', email);
+                window.location.href = 'index.html';
+            } else {
+                showError(result.error || 'Invalid email or password. Please try again.');
+            }
         } catch (error) {
-            showError('Invalid email or password. Please try again.');
+            showError('Login failed. Please try again.');
         }
         showLoading(false);
     });
