@@ -513,12 +513,12 @@ class AdminPanel {
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donation.email}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donation.phone}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${maskedPAN}</td>
+                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${maskedAadhar}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₹${donation.amount.toLocaleString()}</td>
                     <td class="px-6 py-4 whitespace-nowrap">${statusBadge}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${date}<br><span class="text-xs">${time}</span></td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button onclick="adminPanel.viewDonation(${donation.id})" class="text-indigo-600 hover:text-indigo-900 mr-3">View</button>
-                        <button onclick="adminPanel.deleteDonation(${donation.id})" class="text-red-600 hover:text-red-900">Delete</button>
                     </td>
                 </tr>
             `;
@@ -592,12 +592,12 @@ class AdminPanel {
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donation.email}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${donation.phone}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${maskedPAN}</td>
+                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${maskedAadhar}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₹${donation.amount.toLocaleString()}</td>
                     <td class="px-6 py-4 whitespace-nowrap">${statusBadge}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${date}<br><span class="text-xs">${time}</span></td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button onclick="adminPanel.viewDonation(${donation.id})" class="text-indigo-600 hover:text-indigo-900 mr-3">View</button>
-                        <button onclick="adminPanel.deleteDonation(${donation.id})" class="text-red-600 hover:text-red-900">Delete</button>
                     </td>
                 </tr>
             `;
@@ -629,8 +629,8 @@ class AdminPanel {
             'Full Name': donation.donor_name,
             'Email': donation.email,
             'Phone': donation.phone,
-            'PAN': this.maskPAN(donation.pan),
-            'Aadhar': this.maskAadhar(donation.aadhar),
+            'PAN': donation.pan,
+            'Aadhar': donation.aadhar,
             'Amount (₹)': donation.amount,
             'Message': donation.message,
             'Payment ID': donation.razorpay_payment_id,
