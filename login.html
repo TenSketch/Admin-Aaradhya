@@ -11,171 +11,83 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="css/login-style.css">
     
-    <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        .login-container {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .input-group {
-            position: relative;
-        }
-        
-        .input-group input {
-            padding-left: 3rem;
-        }
-        
-        .input-group i {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6b7280;
-        }
-        
-        .btn-login {
-            background: linear-gradient(135deg, #00339a, #0066cc);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 51, 154, 0.3);
-        }
-        
-        .logo-container {
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        .form-container {
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .error-message {
-            display: none;
-            animation: shake 0.5s ease-in-out;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-    </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md">
-        <!-- Logo Section -->
-        <div class="logo-container text-center mb-8">
-            <img src="../assets/images/logo-Aaradhya_trust.png" alt="Aaradhya Trust Logo" class="mx-auto mb-4">
-            <h1 class="text-3xl font-bold text-white mb-2">Aaradhya Trust</h1>
-            <p class="text-white/80 text-lg">Admin Panel</p>
-        </div>
-        
-        <!-- Login Form -->
-        <div class="form-container login-container rounded-2xl p-8 shadow-2xl">
-            <form id="loginForm" class="space-y-6">
-                <div class="text-center mb-6">
-                    <h2 class="text-2xl font-semibold text-white mb-2">Welcome Back</h2>
-                    <p class="text-white/70">Please sign in to your account</p>
-                </div>
-                
-                <!-- Error Message -->
-                <div id="errorMessage" class="error-message bg-red-500/20 border border-red-500/50 text-red-100 px-4 py-3 rounded-lg">
-                    <div class="flex items-center">
-                        <i class="fas fa-exclamation-circle mr-2"></i>
-                        <span id="errorText">Invalid credentials. Please try again.</span>
+    <body class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <!-- Logo Section -->
+            <div class="logo-container text-center mb-8">
+                <img src="assets/images/logo-Aaradhya_trust.png" alt="Aaradhya Trust Logo" class="mx-auto mb-4">
+                <h1 class="text-3xl font-bold mb-2">Aaradhya Trust</h1>
+                <p class="text-lg">Admin Panel</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="form-container login-container rounded-2xl p-8 shadow-2xl">
+                <form id="loginForm" class="space-y-6">
+                    <div class="form-title text-center mb-6">
+                        <h2 class="text-2xl font-semibold mb-2">Welcome Back</h2>
+                        <p>Please sign in to your account</p>
                     </div>
-                </div>
+                    
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="error-message px-4 py-3 rounded-lg">
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            <span id="errorText">Invalid credentials. Please try again.</span>
+                        </div>
+                    </div>
                 
                 <!-- Username Field -->
-                <div class="input-group">
-                    <i class="fas fa-user"></i>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        required
-                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                        placeholder="Username"
-                        autocomplete="username"
-                    >
-                </div>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            required
+                            class="w-full px-4 py-3 rounded-lg"
+                            placeholder="Username"
+                            autocomplete="username"
+                        >
+                    </div>
                 
                 <!-- Password Field -->
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        required
-                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
-                        placeholder="Password"
-                        autocomplete="current-password"
-                    >
-                    <button
-                        type="button"
-                        id="togglePassword"
-                        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/50 hover:text-white focus:outline-none"
-                    >
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-                
-                <!-- Remember Me -->
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center">
+                    <div class="input-group" style="position:relative;">
+                        <i class="fas fa-lock"></i>
                         <input
-                            type="checkbox"
-                            id="remember"
-                            class="rounded border-white/20 text-blue-600 focus:ring-2 focus:ring-white/50"
+                            type="text"
+                            id="password"
+                            name="password"
+                            required
+                            class="w-full px-4 py-3 rounded-lg pr-12"
+                            placeholder="Password"
+                            autocomplete="current-password"
                         >
-                        <span class="ml-2 text-white/80 text-sm">Remember me</span>
-                    </label>
-                    <a href="#" class="text-white/80 text-sm hover:text-white transition-colors">
-                        Forgot password?
-                    </a>
-                </div>
+                    </div>
+                
                 
                 <!-- Login Button -->
-                <button
-                    type="submit"
-                    id="loginButton"
-                    class="btn-login w-full py-3 text-white font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50"
-                >
-                    <span id="loginButtonText">Sign In</span>
-                    <i id="loginSpinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
-                </button>
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="btn-login w-full py-3 text-white font-semibold rounded-lg"
+                    >
+                        <span id="loginButtonText">Sign In</span>
+                        <i id="loginSpinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                    </button>
             </form>
             
             <!-- Footer -->
-            <div class="mt-8 text-center">
-                <p class="text-white/60 text-sm">
-                    © 2025 Aaradhya Trust. All rights reserved.
-                </p>
-                <p class="text-white/60 text-xs mt-1">
-                    Product of <span class="text-yellow-300">TenSketch</span>
-                </p>
-            </div>
+                <div class="login-footer mt-8 text-center">
+                    <p class="text-sm">
+                        © 2025 Aaradhya Trust. All rights reserved.
+                    </p>
+                    <p class="text-xs mt-1">
+                        Product of <span class="brand">TenSketch</span>
+                    </p>
+                </div>
         </div>
     </div>
 

@@ -1,0 +1,89 @@
+// admin-style.scss
+
+/* Color Variables */
+$primary-blue: #00339a;
+$accent-gold: #FFD700;
+$footer-bg: #001f4d;
+$success-green: #10b981;
+$warning-yellow: #f59e0b;
+$error-red: #ef4444;
+
+// Stats Cards
+:root {
+  --primary-blue: #{$primary-blue};
+  --accent-gold: #{$accent-gold};
+  --footer-bg: #{$footer-bg};
+  --success-green: #{$success-green};
+  --warning-yellow: #{$warning-yellow};
+  --error-red: #{$error-red};
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar {
+  background: linear-gradient(180deg, $primary-blue 0%, #002266 100%);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.nav-item {
+  position: relative;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+  }
+  &.active {
+    background-color: $accent-gold;
+    color: $primary-blue;
+    font-weight: 600;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: $primary-blue;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+.main-content {
+  min-height: calc(100vh - 4rem - 5vh);
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+  padding: 1rem;
+}
+
+.view {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+  &.active {
+    display: block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

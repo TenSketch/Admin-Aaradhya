@@ -30,14 +30,12 @@ function showLoading(show) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
-    const togglePassword = document.getElementById('togglePassword');
     const passwordInput = document.getElementById('password');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
-        const remember = document.getElementById('remember').checked;
 
         if (!email || !password) {
             showError('Please enter both email and password.');
@@ -63,14 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showError('Login failed. Please try again.');
         }
         showLoading(false);
-    });
-
-    togglePassword.addEventListener('click', () => {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        const icon = togglePassword.querySelector('i');
-        icon.classList.toggle('fa-eye');
-        icon.classList.toggle('fa-eye-slash');
     });
 });
 
