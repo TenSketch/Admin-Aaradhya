@@ -1,4 +1,4 @@
-// login.js - Handles Firebase Auth for login page
+ // login.js - Handles Firebase Auth for login page
 // Now using backend API for authentication
 
 function showError(message) {
