@@ -1,7 +1,7 @@
 // firestore.js - Firestore setup and helpers
 // firestore.js - API helpers for backend connectivity
 
-const API_BASE = '/api';
+const API_BASE = 'https://adminaaradhya.onrender.com/api';
 
 export async function getCollection(collectionName) {
   const res = await fetch(`${API_BASE}/${collectionName}`);
